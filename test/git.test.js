@@ -20,10 +20,13 @@ describe("Testing GitCommand.status()", function(){
 
     it('Should return information if no changes in directory', function(){
         let wd = new WorkingDirectory();
+        wd.addFile("register.html", "views", "<html>Register</html>");
+        wd.addFile("signin.html", "views", "<html>Signin</html>");
+        wd.addFile("profile.html", "views", "<html>Profile</html>");
         let git = new GitCommand(wd);
         let output = git.status();
 
-        expect(output).to.equal('You have 0 change/s.\n');
+        expect(output).to.equal('You have 3 change/s.\nviews/register.html\nviews/signin.html\nviews/profile.html');
     });
 })
 
